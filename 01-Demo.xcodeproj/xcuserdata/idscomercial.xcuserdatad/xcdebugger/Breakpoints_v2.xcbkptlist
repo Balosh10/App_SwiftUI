@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9B96A9F6-092D-42F0-9A5D-27A35E7833F7"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0F31316-2E4E-447B-8C29-F899D26CF7DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "01-Demo/DataLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "load()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC132EC9-5268-4B1D-B892-C6A89A3C6A2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "01-Demo/DataLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "sort()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC132EC9-5268-4B1D-B892-C6A89A3C6A2B - d8d5e73e2e17bef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_1_Demo.DataLoader.sort() -&gt; ()"
+                  moduleName = "01-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idscomercial/Desktop/01%20-%20Demo/01-Demo/01-Demo/DataLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "EC132EC9-5268-4B1D-B892-C6A89A3C6A2B - 1ac4201624a4192f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (_1_Demo.UserDataModel, _1_Demo.UserDataModel) -&gt; Swift.Bool in _1_Demo.DataLoader.sort() -&gt; ()"
+                  moduleName = "01-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idscomercial/Desktop/01%20-%20Demo/01-Demo/01-Demo/DataLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
