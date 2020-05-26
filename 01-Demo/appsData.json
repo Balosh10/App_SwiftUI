@@ -1,0 +1,47 @@
+[
+    {
+        "id" : 1,
+        "name_app" : "innovat alumnos",
+        "company" : "innovat software para escuelas particulares",
+        "turn" : "social networking",
+        "platform" : "ios y android",
+        "status_app": true,
+        "messaje_app": "desarrollado en android nativa y ios nativa"
+    },
+    {
+        "id" : 2,
+        "name_app" : "innovat maestros",
+        "company" : "innovat software para escuelas particulares",
+        "turn" : "social networking",
+        "platform" : "ios y android",
+        "status_app": true,
+        "messaje_app": "desarrollado en android nativa y ios nativa"
+    },
+    {
+        "id" : 3,
+        "name_app" : "ek - terra regia",
+        "company" : "enkontrol",
+        "turn" : "productividad",
+        "platform" : "ios y android",
+        "status_app": true,
+        "messaje_app": "desarrollado en xamarin forms"
+    },
+    {
+        "id" : 4,
+        "name_app" : "ek - vidusa",
+        "company" : "enkontrol",
+        "turn" : "productividad",
+        "platform" : "ios y android",
+        "status_app": true,
+        "messaje_app": "desarrollado en xamarin forms"
+    },
+    {
+        "id" : 5,
+        "name_app" : "enkontrol Movil",
+        "company" : "enkontrol",
+        "turn" : "productividad",
+        "platform" : "ios y android",
+        "status_app": true,
+        "messaje_app": "desarrollado en android nativa, ios nativa. tambien se esta migrando a xamarin forms"
+    }
+]

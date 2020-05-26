@@ -9,7 +9,7 @@
 import Foundation
 
 public class DataLoader {
-    @Published var userData = [UserDataModel]()
+    @Published var userData = [AppsModel]()
     
     init() {
         load()
@@ -21,7 +21,7 @@ public class DataLoader {
             do {
                 let data = try Data(contentsOf: fileLocation)
                 let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([UserDataModel].self, from: data)
+                let dataFromJson = try jsonDecoder.decode([AppsModel].self, from: data)
                 self.userData = dataFromJson
             } catch {
                 print(error)
@@ -30,6 +30,6 @@ public class DataLoader {
     }
     
     func sort(){
-        self.userData = self.userData.sorted(by: { $0.nombre < $1.nombre })
+        self.userData = self.userData.sorted(by: { $0.name_app < $1.name_app })
     }
 }
