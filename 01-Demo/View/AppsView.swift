@@ -46,6 +46,7 @@ struct AppsView:View {
         UITableView.appearance().separatorColor = .clear
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
+        
     }
     
     var body: some View {
@@ -55,15 +56,19 @@ struct AppsView:View {
             .overlay(
                 Section(header: AppHeaderView()){
                     List(appdata.indices){ item in
-                        NavigationLink(destination: AppsDetailView(course: self.appdata[item])){
+                        ZStack(alignment: .leading){
                             if self.appdata[item].status_app {
-                               CourseFullImageRow(course:self.appdata[item])
+                                CourseFullImageRow(course:self.appdata[item])
                             } else {
                                 CourseRow(course:self.appdata[item])
                             }
+                            NavigationLink(destination: AppsDetailView(course: self.appdata[item])){
+                                EmptyView()
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
-                    .padding()
+                    .padding(0)
                     .navigationBarItems(
                     leading:
                         HStack {
@@ -89,7 +94,7 @@ struct AppsView:View {
     //                        .navigationBarTitle(Text("Apps en producción").foregroundColor(.clear), displayMode: .inline)
                                 
                     
-                    .navigationBarTitle("Bienvenido!", displayMode: .inline)
+                    .navigationBarTitle("Bienvenido", displayMode: .inline)
                     .background(NavigationConfigurator { nc in
                         //nc.navigationBar.barTintColor = UIColor.clear.withAlphaComponent(0.1)
                         nc.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -136,58 +141,112 @@ struct  CourseFullImageRow: View {
     var course:AppsModel
     
     var body: some View {
-//        HStack(alignment: .firstTextBaseline, spacing: 8) {
-//            Image("ic_oficina")
-//            .resizable()
-//            .aspectRatio(contentMode: .fill)
-//            .frame(width:48, height: 48)
-//            .cornerRadius(15)
-//            .overlay(RoundedRectangle(cornerRadius: 15).foregroundColor(.gray).opacity(0.25))
-//
-//            Text(course.name_app)
-//            .font(.system(.headline, design:.rounded))
-//            .fontWeight(.bold)
-//            .foregroundColor(Color.white)
-//            .multilineTextAlignment(.center)
-//        }
-//        //.padding(2)
-//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100, alignment: .leading)
-//        //.padding(0)
-//        .foregroundColor(.red)
-//        .background(Color.blue)
-//        .cornerRadius(16)
-        Text("This is a row!")
-        .listRowBackground(Color.clear)
+        HStack {
+            Image("ic_oficina")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width:80, height: 80)
+            .cornerRadius(15)
+            .overlay(RoundedRectangle(cornerRadius: 15).foregroundColor(.gray).opacity(0.25))
+            .padding()
+
+            VStack{
+                Text(course.name_app.uppercased())
+                .font(.system(size: 14, weight: .bold, design: .serif))
+                .foregroundColor(Color.black)
+                .multilineTextAlignment(.leading)
+                .frame(width: 200, height: 23, alignment: .leading)
+                
+                Text(course.company.capitalized)
+                .font(.system(size: 12, weight: .light, design: .serif))
+                .foregroundColor(Color.gray)
+                .multilineTextAlignment(.leading)
+                .frame(width: 200, height: 23, alignment: .leading)
+                
+                Text(course.turn.capitalized)
+                .font(.system(size: 12, weight: .light, design: .serif))
+                .foregroundColor(Color.gray)
+                .multilineTextAlignment(.leading)
+                .frame(width: 200, height: 23, alignment: .leading)
+
+                Text("Plataforma: " + course.platform.capitalized)
+                .font(.system(size: 12, weight: .light, design: .serif))
+                .foregroundColor(Color.gray)
+                .multilineTextAlignment(.leading)
+                .frame(width: 200, height: 23, alignment: .leading)
+            }
+            .padding(0)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 300, alignment: .leading)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 300, alignment: .leading)
+        .background(Color.white)
+        .cornerRadius(8)
+        .padding(0)
     }
 }
 
 struct AppHeaderView: View {
+    
+    @State private var showingActionSheet = false
+    @State private var backgroundColor = Color.white
+
     var body: some View {
-        HStack{
-           Image("ic_user")
-           .resizable()
-           .aspectRatio(contentMode: .fill)
-           .frame(width: 96, height: 96, alignment: .center)
-           .clipShape(Circle())
-           .shadow(radius: 48)
-               .overlay(Circle().stroke(Color.green.opacity(0.5), lineWidth: 2))
+        VStack{
+            HStack{
+               Image("ic_user")
+               .resizable()
+               .aspectRatio(contentMode: .fill)
+               .frame(width: 96, height: 96, alignment: .center)
+               .clipShape(Circle())
+               .shadow(radius: 48)
+                   .overlay(Circle().stroke(Color.green.opacity(0.5), lineWidth: 2))
+                VStack{
+                    Text("Osvaldo")
+                    .foregroundColor(Color.white)
+                        .font(.system(size:16, weight: .black, design: .serif))
+                    .frame(width: 250, height: 23, alignment: .bottomLeading)
+                    Text("Cespedes Hernandez")
+                    .foregroundColor(Color.white)
+                        .font(.system(size:14, weight: .bold, design: .serif))
+                    .frame(width: 250, height: 23, alignment: .bottomLeading)
+                   
+                    HStack{
+                        Image(systemName: "star.fill")
+                        .colorYellowStyle()
+                        Image(systemName: "star.fill")
+                        .colorYellowStyle()
+                        Image(systemName: "star.fill")
+                        .colorYellowStyle()
+                        Image(systemName: "star.fill")
+                        .colorYellowStyle()
+                        Image(systemName: "star.fill")
+                        .colorYellowStyle()
+                    }
+                    .frame(width: 250, height: 23, alignment: .leading)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80, alignment:.center )
+            }
+            .gesture(TapGesture().onEnded{
+                self.showingActionSheet.toggle()
+            })
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100, alignment: .center)
+            .padding()
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
+                    .default(Text("Red")) { self.backgroundColor = .red },
+                    .default(Text("Green")) { self.backgroundColor = .green },
+                    .default(Text("Blue")) { self.backgroundColor = .blue },
+                    .cancel()
+                ])
+            }
+            
             VStack{
-                Text("Osvaldo")
+                Text("Apps en distribucion")
                 .foregroundColor(Color.white)
                     .font(.system(size:16, weight: .black, design: .serif))
-                .frame(width: 250, height: 23, alignment: .bottomLeading)
-                Text("Cespedes Hernandez")
-                .foregroundColor(Color.white)
-                    .font(.system(size:14, weight: .bold, design: .serif))
-                .frame(width: 250, height: 23, alignment: .bottomLeading)
-               
-                Image(systemName: "star.fill")
-                .imageScale(.medium)
-                .foregroundColor(.yellow)
+                    .frame(width: 250, height: 23, alignment: .center)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80, alignment:.center )
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 35, alignment: .center)
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100, alignment: .center)
-        .padding()
     }
 }
