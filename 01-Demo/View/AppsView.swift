@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 extension UIImageView {
 
@@ -80,7 +81,13 @@ struct AppsView:View {
                         },
                     trailing:
                         HStack {
-                            Button(action: {}) {
+                            Button(action: {
+                                do {
+                                    try Auth.auth().signOut()
+                                } catch{
+                                    print("error al eliminar")
+                                }
+                            }) {
                                 Image(systemName: "plus.square.fill")
                                 .font(.largeTitle)
                             }

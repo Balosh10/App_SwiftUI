@@ -10,6 +10,7 @@ import SwiftUI
 
 enum Views:String {
     case LoginView = "LoginView"
+    case RegisterView = "RegisterView"
     case HomeTabView = "HomeTabView"
 }
 
@@ -25,6 +26,8 @@ struct MainContent: View {
         switch viewRouter.currentPage {
         case Views.LoginView.rawValue:
            return AnyView(LoginView(viewRouter:viewRouter))
+        case Views.RegisterView.rawValue:
+            return AnyView(RegisterView(viewRouter: viewRouter))
         case Views.HomeTabView.rawValue:
             return AnyView(HomeTabView(viewRouter:viewRouter))
         default:
